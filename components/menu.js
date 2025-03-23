@@ -1,16 +1,21 @@
 import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import style from '../styles/style';
 
 function Menu() {
   return (
-    <nav>
-      <ul style={{ display: 'flex', justifyContent: 'center', listStyleType: 'none', padding: 0 }}>
-        <li style={{ margin: '0 15px' }}><a href="#produtos">Produtos</a></li>
-        <li style={{ margin: '0 15px' }}><a href="#acessorios">Acessórios</a></li>
-        <li style={{ margin: '0 15px' }}><a href="#comida">Comida</a></li>
-        <li style={{ margin: '0 15px' }}><a href="#brinquedos">Brinquedos</a></li>
-      </ul>
-    </nav>
+    <View style={style.menuContainer}>
+      <MenuItem label="Acessórios" />
+      <MenuItem label="Comida" />
+      <MenuItem label="Brinquedos" />
+    </View>
   );
 }
+
+const MenuItem = ({ label }) => (
+  <TouchableOpacity style={style.menuBotao}>
+    <Text style={style.menuTexto}>{label}</Text>
+  </TouchableOpacity>
+);
 
 export default Menu;

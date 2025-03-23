@@ -1,6 +1,6 @@
-// src/components/Card.js
-
 import React from 'react';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
+import styles from '../styles/style';
 
 function Card({ produto }) {
   const { nome, preco, foto } = produto;
@@ -10,22 +10,16 @@ function Card({ produto }) {
   };
 
   return (
-    <div style={cardStyle}>
-      <img src={foto} alt={nome} style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
-      <h3>{nome}</h3>
-      <p>R$ {preco}</p>
-      <button onClick={handleComprar}>Comprar</button>
-    </div>
+    <View style={styles.card}>
+      <Image source={{ uri: foto }} style={styles.produtoImagem} />
+      <Text style={styles.produtoNome}>{nome}</Text>
+      <Text style={styles.produtoPreco}>R$ {preco}</Text>
+
+      <TouchableOpacity style={styles.botao} onPress={handleComprar}>
+        <Text style={styles.botaoTexto}>Comprar</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
-
-const cardStyle = {
-  border: '1px solid #ccc',
-  padding: '20px',
-  margin: '10px',
-  textAlign: 'center',
-  borderRadius: '8px',
-  boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-};
 
 export default Card;
